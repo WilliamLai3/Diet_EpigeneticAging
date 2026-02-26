@@ -30,14 +30,8 @@ cox_formula <- as.formula(
 
 # ------------------------ Outcome HR ------------------------
 hr_list <- map_dfr(names(disease_fieldids) %>% unique(), function(g) {
-  if(g!='Cancer_Melanoma') {
-    cox_covars <- c("age_rec", "sex", "edu_college", "eth_white",
-                    "tdi", "smoking", "drinking", "actc")
-    
-  } else {
     cox_covars <- c("age_rec", "sex", "edu_college", "eth_white", "bmi",
                     "tdi", "smoking", "drinking", "actc")
-  }
   
   cox_formula <- as.formula(
     paste0(
