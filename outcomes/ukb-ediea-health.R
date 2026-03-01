@@ -20,7 +20,7 @@ disease_fieldids <- fromJSON("./UKB/disease_fieldids.json", simplifyVector = TRU
 
 
 cox_covars <- c("age_rec", "sex", "edu_college", "eth_white", "bmi",
-                "tdi", "smoking", "drinking", "actc")
+                "tdi", "smoking", "drinking", "actc", "")
 cox_formula <- as.formula(
   paste0(
     "Surv(fu, event) ~ ediea",
@@ -30,8 +30,9 @@ cox_formula <- as.formula(
 
 # ------------------------ Outcome HR ------------------------
 hr_list <- map_dfr(names(disease_fieldids) %>% unique(), function(g) {
-    cox_covars <- c("age_rec", "sex", "edu_college", "eth_white", "bmi",
-                    "tdi", "smoking", "drinking", "actc")
+  cox_covars <- c("age_rec", "sex", "edu_college", "eth_white", "bmi",
+                  "tdi", "smoking", "drinking", "actc", "p30901","p30902",
+                  "p74","p54","p3166","p21842")
   
   cox_formula <- as.formula(
     paste0(
