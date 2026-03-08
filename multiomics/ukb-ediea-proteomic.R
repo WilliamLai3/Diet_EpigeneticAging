@@ -40,7 +40,8 @@ ukb_olink <- ukb_data %>%
                mutate(eid = as.numeric(eid)), by = "eid")
 
 cox_covars <- c("age_rec", "sex", "edu_college", "eth_white", "bmi", 
-                "tdi", "smoking", "drinking", "actc")
+                "tdi", "smoking", "drinking", "actc", "p30901","p30902",
+                "p74","p54","p3166","p21842")
 ukb_olink[,cox_covars] <- ukb_olink %>%
   dplyr::select(cox_covars) %>%
   mice(seed = 2025) %>%
